@@ -2,12 +2,15 @@
   "name": "study",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server.js", 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "start-server":"node server.js"
+    "start-server": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
