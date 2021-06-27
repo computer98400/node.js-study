@@ -47,6 +47,5 @@ const requesthandler = (req, res) => {
 //     handler: requesthandler,
 //     sometext: "heelo"
 // }
-asdfasdfasfd;
 module.exports.handler = requesthandler;
 module.exports.someText = "some hard coded test";
