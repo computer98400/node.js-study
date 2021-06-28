@@ -2,20 +2,26 @@ const http = require('http');
 
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const app = express();
 
-app.use((req, res, next) => {
-    console.log('In the middleware');
-    next();
-});
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-app.use((req, res, next) => {
-    console.log('In another middleware');
-    res.send('<h1>Hello from Express!</h1>');
-});
+app.use(bodyParser.urlencoded({extended: false}));
 
-const server = http.createServer(app);
+app.use(shopRoutes);
+app.use(adminRoutes);
 
-server.listen(8080);
+// app.use('/', (req, res, next) => {
+//     console.log('This always runs');
+//     next();
+
+// })
 
 
+
+
+
+app.listen(8080);
