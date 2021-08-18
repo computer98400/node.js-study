@@ -35,9 +35,10 @@ const server = http.createServer((req, res) => {  //클라이언트의 요청에
         });
         req.on('end',() =>{
             const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.split('=')[1];
             console.log(parsedBody);
+            fs.writeFileSync('message.txt',message);
         });
-        fs.writeFileSync('message.txt','DUMMY');
         res.statusCode = 302;
         res.setHeader('Location', '/');
         return res.end();
