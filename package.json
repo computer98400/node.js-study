@@ -1,0 +1,22 @@
+{
+  "name": "node.js-study",
+  "version": "1.0.0",
+  "description": "complete Node.js Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "node app.js",
+    "playtest": "node play.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/computer98400/node.js-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/computer98400/node.js-study/issues"
+  },
+  "homepage": "https://github.com/computer98400/node.js-study#readme"
+}
