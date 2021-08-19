@@ -28,6 +28,7 @@ const requestHandler = (req, res) => {
             })
         });
     }
+    
     res.setHeader('Content-Type','text/html'); 
     res.write('<html>');        //응답에 일부 데이터를 쓸수있다.
     res.write('<head><title>My First</title></head>');
