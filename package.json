@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/computer98400/node.js-study/issues"
   },
-  "homepage": "https://github.com/computer98400/node.js-study#readme"
+  "homepage": "https://github.com/computer98400/node.js-study#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
