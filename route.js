@@ -28,18 +28,15 @@ const requestHandler = (req, res) => {
             })
         });
     }
-    
     res.setHeader('Content-Type','text/html'); 
     res.write('<html>');        //응답에 일부 데이터를 쓸수있다.
     res.write('<head><title>My First</title></head>');
     res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
     res.write('</html>');
     res.end();
-
-
 };
 
 module.exports = {
     handler : requestHandler,
-    someText: 'Some hard code'}
-    
+    someText: 'Some hard code'
+}
