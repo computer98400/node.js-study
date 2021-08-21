@@ -1,10 +1,10 @@
 const express = require('express');
 
-
+const rotDir = require('../util/path');
 const router = express.Router();
 
 router.get('/admin/add-product',(req, res, next) => {
-    res.send('<form action="/add-product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>');
+    res.sendFile(path.join(rotDir,'views','add-product'));
     // Alows the request to continue t the next middleware in line
 });
 //get || post || use || delete || patch || put....
