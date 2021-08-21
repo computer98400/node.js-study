@@ -1,11 +1,13 @@
 const express = require('express');
-
+const path = require('path');
 const router = express.Router();
 
 
 
 router.get('/',(req, res, next) => {
-    res.send('<h1>hello from Express!</h1>' );
+    //res.sendFile('/views/shop.html');       //wrong Syntex
+    res.sendFile(path.join(__dirname,'../', 'views','shop.html'));  //go upper level and down
+
 });
 
 module.exports = router;
