@@ -4,12 +4,12 @@ const rotDir = require('../util/path');
 const router = express.Router();
 
 
-router.get('/add-product',(req, res, next) => {
+router.get('/admin/add-product',(req, res, next) => {
     res.sendFile(path.join(rotDir,'views','add-product.html'));
     // Alows the request to continue t the next middleware in line
 });
 //get || post || use || delete || patch || put....
-router.post('/product', (req,res) => {
+router.post('/admin/product', (req,res) => {
     //redirect  and File IO;
     console.log(req.url);
     console.log(req.method);
