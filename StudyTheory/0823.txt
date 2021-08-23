@@ -1,0 +1,8 @@
+//74
+
+html 파일에 style 적용하는 예제이다.
+
+문제사항 ))  admin.js에 path를 지정안해줬다. -> shop.js 와 동일하게 변경.
+
+const path = require('path');
+  res.sendFile(path.join(rotDir,'views','add-product.html'));
