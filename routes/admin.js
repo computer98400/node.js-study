@@ -4,7 +4,7 @@ const rotDir = require('../util/path');
 const router = express.Router();
 const products = [];
 
-router.get('/admin/add-product',(req, res, next) => {
+router.get('/add-product',(req, res, next) => {
     res.sendFile(path.join(rotDir,'views','add-product.html'));
     // Alows the request to continue t the next middleware in line
 });

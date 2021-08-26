@@ -5,8 +5,8 @@ const path = require('path');
 
 const app = express();
 
-const shopRoutes = require('./routes/shop.js');
-const adminData = require('./routes/admin.js');
+const adminData = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 
 // app.use('/',(req,res,next) => {
@@ -17,7 +17,7 @@ const adminData = require('./routes/admin.js');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
 
-app.use('./admin',adminData.routes);
+app.use('/admin',adminData.routes);
 app.use(shopRoutes);
 
 
