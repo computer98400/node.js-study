@@ -1,0 +1,23 @@
+사용가능한 템플릿 엔진엔 EJS PUG Handlebars 등이 있다.
+EJS 표현방식
+<p><%= name %></p>
+
+Jade 표현방식
+p #{name}
+
+Handlebars 표현방식
+<p>{{ name }}</p>
+
+템플릿 엔진 - 웹 문서가 출력되는 템플릿 엔진을 말함.
+웹 템플릿들과 웹 컨텐츠 정보를 처리하기 위해 설계된 소프트웨어.
+
+HTML와 JS를 연동시켜주는 역할
+Server side Templete engine과  Client side Templete Engine으로 나눌 수 있다.
+
+server쪽의 템플릿엔진으로 jsp, Freemarker등이 있고,
+client쪽의 템플릿엔진으로 vue, react등이 있다.
+
+== 결국 데이터를 어떻게 가져오고 어떻게 표현할것인가. 혹은 어떻게 보낼것인가 등을 도와주는 엔진으로 보인다.
+
+서버 사이드 템플릿 엔진에선 js Templete engine, java Templete engine으로 나눠진다.
+강의에서 나오는 EJS, Jade, Handlebars 등은 JS Templete Engine 이다.
