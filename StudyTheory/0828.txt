@@ -21,3 +21,10 @@ client쪽의 템플릿엔진으로 vue, react등이 있다.
 
 서버 사이드 템플릿 엔진에선 js Templete engine, java Templete engine으로 나눠진다.
 강의에서 나오는 EJS, Jade, Handlebars 등은 JS Templete Engine 이다.
+
+ejs
+html 문법이 tab을 통해서 구분된다.
+app.js에선 app.set()을통해서 html템플릿을 지정해주게 되고,
+shop.js에선 res.render(파일이름)을 통해서 지정해준다.
+해당 코드를 localhost에서 확인시에 정상적인 html코드로 보이는 걸 확인할 수 있다.
+
