@@ -1,0 +1,21 @@
+서버 실행하게 되고 shop의 경우 adminData를 통해서 제품리스트를 받게된다.
+해당 변수는 prods로 지정되어있으며 title에 대한 정보만을 가진다.
+때문에 표현시(EJS에서 사용시 해당 표현으로 prods를 사용하게 가능해진다.)
+
+add-product.pug파일 추가
+-> html파일 ejs로 변환
+
++ admin.js 파일 변경
+-> res.sendFile(path.join(rootDir,'views','add-product.html'))
+-> res.render('add-product');
+
+
++ 404page.pug파일 추가
+-> main-layout을 통해서 추가함.
+
++ views/layouts/main-layouts.pug 추가함
+***********기본 header 파일을 생성하였다 **************
+기존의 파일을 가져와서 문서를 동적으로 표현하게 되는데
+이때 block을 통해서 후크(?)를 만들어준다 -> 해당 용도는
+동적으로 사용되는 html파일에서 상황에따른 파일을 만들어 주는것이라 보면된다.
+

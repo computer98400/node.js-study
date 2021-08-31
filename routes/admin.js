@@ -4,7 +4,10 @@ const router = express.Router();
 const rootDir = require('../util/path');
 const products = [];
 router.get('/add-product', (req, res, next) => {
-    res.sendFile(path.join(rootDir,'views', 'add-product.html'));
+   
+  res.render('add-product', {pageTitle: 'Add Product', path:'/add-product'});
+  
+    //res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
    // res.send('<form action="/admin/add-product" method="POST"><input type="text" name="title"><button type="submit">add product</button></form>');
 })
   
