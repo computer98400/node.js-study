@@ -1,0 +1,14 @@
++shop.pug , add-product.pug 내용 추가
+-> active 속성 변경
+
++shop.js, admin.js 내용 추가
+-> json에 path 값 추가
+
++app.js 내용추가
+-> Handlebars 세팅을 위해 app.engine()추가
+
++각각의 hbs파일 생성(handlebars 파일)
+
+
+개념) handlebars의 경우 기본 html에 사용자정의 구문을 같이 사용하기 때문에 기존 html파일을 가져와도된다.
+      if문을 사용시에 #을 통해서 시작하고 /를 통해서 끝나게 된다. (ex -> #if , /if)
