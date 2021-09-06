@@ -1,10 +1,8 @@
 <%- include('includes/head.ejs')%>
 <title><%= pageTitle %></title>
 </head>
-
 <body>
     <%- include('includes/navigation.ejs') %>
-
     <main>
         <form  class="product-form" action="/add-product" method="POST">
             <div class="form-control">
@@ -14,5 +12,4 @@
             <button type="submit">Add Product</button>
         </form>
     </main>
-
 <%- include('includes/end.ejs') %> 
