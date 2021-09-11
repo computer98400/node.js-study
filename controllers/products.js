@@ -1,5 +1,5 @@
 const Product = require('../models/product');
-const Products = require('../models/product');
+
 
 exports.getAddProduct = (req, res, next) => {
     res.render('add-product', {
@@ -15,19 +15,21 @@ exports.getAddProduct = (req, res, next) => {
 }
 
 
+
 exports.postAddProduct = (req, res, next) => {
-    const product = new Product(req.body.title);
-    product.save();
+    const product = new Product(req.body.title);    //이녀석은 입력값을 받는다.
+    product.save();             //입력값을 저장해준다.
     res.redirect('/');
 }
 
 exports.getProducts = (req, res) => {
-    const product = Product.fetchAll();
+    const product = Product.fetchAll();         //product에 클래스에 선언된 배열값을 가져온다.
+
     res.render('shop', {
-        prods: products,
+        prods: product,
         pageTitle: 'Shop',
         path: '/',
-        hasProducts: products.length > 0,
+        hasProducts: product.length > 0,
         activeShop: true,
         productCSS: true
     });
