@@ -1,0 +1,31 @@
+model을 새로 만들어서 접근하게 된다.
+
+
+현재 mvc에 해당하는 것.
+
+models, controllers, views 
+
+product.js 내용
+-> 클래스를 기반으로 생성된 객체를 참조하고 배열에 집어넣기때문에
+product.save(객체)를 사용할시에 products에 넣을 수 있다.
+
+fetchAll의 경우 this를 쓸수없다. -> 해당 js파일안에 products 배열이 선언되있으며
+class내부엔 products가 정의되어있지않기때문이다.
+
+
++models/products
+사용자가 입력한 내용이 저장되는 파일
+json 파일 형식으로 만들어진다. 
+
+개념 readfile, readfileSync
+둘의 차이는 비동기, 동기로 나눠진다. 
+readfile의 경우 비동기로 이뤄지고
+readfileSync의 경우는 동기로 이뤄진다.
+
+개념 arrow functon
+화살표함수의 경우 해당 매개변수를 사용하게되면 의미를 잃어버린다.
+때문에 한번 사용하고 마는 변수들의 경우 arrow function을 사용하게 된다.
+
+models/product.js에서의 오류
+클래스의 반환이 비동기로 이뤄지기때문에 fs.readFile을 통해 값을 반환하기 전에
+해당 메소드가 끝나버릴 수 있다.
