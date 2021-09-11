@@ -29,3 +29,30 @@ readfileSync의 경우는 동기로 이뤄진다.
 models/product.js에서의 오류
 클래스의 반환이 비동기로 이뤄지기때문에 fs.readFile을 통해 값을 반환하기 전에
 해당 메소드가 끝나버릴 수 있다.
+
++ views/ admin ,, shop 파일 추가
+controllers 수정 -> 파일 경로 변경에 따른 코드 수정.
+shop.ejs -> product-list 파일명 변경
+
+-------------------------
+지금까지 만들었던 mvc패턴에 상세 페이지들 만들기
+
+views를 admin과 shop으로 나눈다. -> 관리자와 소비자로 나눈것이다.
+관리자 페이지  - addproduct, editproduct, productlist
+소비자 페이지  - cart, checkout, index, product-detail
+
+router/admin.js 에서 get&post 경로에 admin을 추가하지않은 이유
+=> app.js에서 admin을 지정해주었기때문에 내부에선 필요가없다.
+* 만약 추가할경우 = 기존 : 'admin/products' 추가했을때 : 'admin/admin/products'
+
+-------------------------------------------
+MVC패턴의 특이점?
+
+get,post에 대해서 각각의 컨트롤러가 필요해진다.
+라우터에서 get post에 대해서 해당 명령들이 사용하는 모델 접근방법을 컨트롤러에 집어넣어준다는 느낌..
+
+
+controllers/shop.js
+exports.getProducts는 제품 전체리스트를 포함한 함수이다.
+exports.getCart는 사용자가 담은 상품리스트를 포함한 함수이다.
+exports.getCheckout는 사용자가 구매한 상품리스트를 포함한 함수이다.

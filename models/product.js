@@ -1,13 +1,14 @@
 //const products = [];    ///이곳에 집어넣고 이걸 사용하고 싶다.
 const fs = require('fs');
 const path = require('path');
+
 const p = path.join(
     path.dirname(process.mainModule.filename),
     'data',
     'products.json'
 );
-const getproductsFromFile = cb => {
 
+const getproductsFromFile = cb => {
     fs.readFile(p, (err, fileContent) => {
         if (err) {
             cb([]);
@@ -15,8 +16,6 @@ const getproductsFromFile = cb => {
             cb(JSON.parse(fileContent));
         }
     });
-
-
 };
 
 
