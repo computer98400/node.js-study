@@ -6,7 +6,7 @@ exports.getProducts = (req, res) => {
         res.render('shop/product-list', {
             prods: products,
             pageTitle: 'All Products',
-            path: '/products'
+            path: '/product-list'
         });
     });
     //  res.send('<h1>Hello from express</h1>');
