@@ -44,3 +44,15 @@ exports.getCheckout = (req, res, next) => {
         pageTitle: 'Checkout'
     });
 };
+exports.getProduct = (req, res, next) => {
+    const prodId = req.params.productId;    //locking ID
+    Product.findById(prodId, product => {
+        //console.log(product);
+        res.render('shop/product-detail', {
+            product: product,
+            path: '/product-detail',
+            pageTitle: 'product-detail'
+        });
+    });
+
+}
