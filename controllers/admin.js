@@ -1,12 +1,12 @@
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-    res.render('/admin/add-product', {
+    res.render('admin/add-product', {
         pageTitle: 'Add Product',
-        path: '/admin/add-product',
+        path: 'admin/add-product',
         formsCss: true,
         productCss: true,
-        activeAddProduct: true,
+        activeAddProduct: true
         // show: function () { console.log(pageTitle, path, formsCss, productCss, activeAddProduct) }
     });
     //res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
@@ -30,10 +30,10 @@ exports.getProducts = (req, res, next) => {
 
     Product.fetchAll((products) => {
 
-        res.render('/admin/products', {
+        res.render('admin/products', {
             prods: products,
             pageTitle: 'Admin Products',
-            path: '/admin/products'
+            path: 'admin/products'
         });
 
     });

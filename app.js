@@ -1,6 +1,11 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+const errorController = require('./controllers/404');
+
 
 //const expressHbs = require('express-handlebars');
 const app = express();
@@ -11,25 +16,17 @@ const app = express();
 //   layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'handlebars'
 // })
 // );
-
-
-
 app.set('view engine', 'ejs');
 //app.set('view engine', 'handlebars');
 //app.set('view engine', 'pug');
 app.set('views', 'views');
 
-const adminRoutes = require('./routes/admin.js');
-const shopRoutes = require('./routes/shop.js');
-
-const errorController = require('./controllers/404.js');
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(adminRoutes);
 app.use(shopRoutes);
+app.use('/admin', adminRoutes);
 
 app.use(errorController.page404);
 
