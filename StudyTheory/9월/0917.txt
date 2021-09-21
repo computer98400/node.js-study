@@ -35,3 +35,7 @@ product-detail 기능 추가
     -> 현재 개발단계에서 views/includes를 통해서 양식을 지정해주었고, 각 head, main, end에 따른 데이터가 필요하다
         ex)head-pageTitle / nevigation-path = ejs를 통해서 데이터를 동적으로 표현하기때문
         
+---------------------------------------------------
+
+post메소드를 통한 request
+
