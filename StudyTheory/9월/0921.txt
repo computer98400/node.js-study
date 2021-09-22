@@ -3,3 +3,11 @@ post get데이터 파싱하기.
 오류. includes/add-to-cart.ejs파일을 각 페이지에 넣어줬는데 오류가 발생햇다.
 - add-to-cart 파일에 product를 사용하는 부분이 있기 때문에 해당 product를 연결시켜주어야한다. 
 -> add-to-cart 파일은 각 페이지에 종속적이기 때문에 include()를 써줄 때 같이 넘겨 주어야 한다.
+
+어떤 문자열에서 +를 붙여주게되면 해당 문자열이 숫자일 경우 자동으로 변환가능하다.
+ex) testStr+ +numberStr  => numberStr은 숫자로 저장됨.
+
+
+add-product와 edit-product는 같은 틀을 공유하게 된다.
+다만 다른점은 add-product의 경우는 아에 없는 제품을 추가하는 것이고, edit-product는 있는 제품을 재정의하는것이기때문에
+기존에 잇는 데이터를 가져와서 뿌려주고 변경하게 된다.
