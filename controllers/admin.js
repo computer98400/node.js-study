@@ -18,7 +18,7 @@ exports.postAddProduct = (req, res, next) => {
     const imageUrl = req.body.imageUrl;
     const price = req.body.price;
     const description = req.body.description;
-    const product = new Product(title, imageUrl, price, description);    //이녀석은 입력값을 받는다.
+    const product = new Product(null, title, imageUrl, price, description);    //이녀석은 입력값을 받는다.
     product.save();                                                     //입력값을 저장해준다.
     res.redirect('/');
 }
@@ -43,6 +43,16 @@ exports.getEditProduct = (req, res, next) => {
     });
 
 
+}
+exports.postEditProduct = (req, res, next) => {
+    const prodId = req.body.productId;
+    const updatedTitle = req.body.title;
+    const updatedPrice = req.body.price;
+    const updatedImageUrl = req.body.imageUrl;
+    const updatedDesc = req.body.description;
+    const updatedProduct = new Product(prodId, updatedTitle, updatedPrice, updatedImageUrl, updatedDesc);
+    updatedProduct.save();
+    res.redirect('/admin');
 }
 
 exports.getProducts = (req, res, next) => {
