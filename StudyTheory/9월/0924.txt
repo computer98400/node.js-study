@@ -1,0 +1,8 @@
+html에 ejs를 연동하는 부분에서 오류가 생겼다.
+
+if문에 중괄호 안붙여서 오류가 떳었음..
+
+
+
+ ejs를 컴파일하는 동안 C:\node\node.js-study\views\admin\edit-product.ejs에서 catch 누락 또는 finally 시도 후 
+ -> 해당 오류에 대해선 ejs를 사용시 문법오류라고 보인다.

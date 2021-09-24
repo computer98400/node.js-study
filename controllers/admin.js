@@ -52,7 +52,7 @@ exports.postEditProduct = (req, res, next) => {
     const updatedDesc = req.body.description;
     const updatedProduct = new Product(prodId, updatedTitle, updatedPrice, updatedImageUrl, updatedDesc);
     updatedProduct.save();
-    res.redirect('/admin');
+    res.redirect('/admin/products');
 }
 
 exports.getProducts = (req, res, next) => {

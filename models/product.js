@@ -32,7 +32,9 @@ module.exports = class Product {
     save() {
         getproductsFromFile(products => {
             if (this.id) {
-                const existingProductIndex = products.findIndex(prod => prod.id === this.id);
+                const existingProductIndex = products.findIndex(
+                    prod => prod.id === this.id
+                );
                 const updateProducts = [...products];
                 updateProducts[existingProductIndex] = this;
                 fs.writeFile(p, JSON.stringify(products), (err) => {
