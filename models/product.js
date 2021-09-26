@@ -1,6 +1,7 @@
 //const products = [];    ///이곳에 집어넣고 이걸 사용하고 싶다.
 const fs = require('fs');
 const path = require('path');
+const { deleteProduct } = require('./cart');
 
 const Cart = require('./cart');
 const p = path.join(
@@ -54,10 +55,10 @@ module.exports = class Product {
     static deleteById(id) {
         getproductsFromFile(products => {
             const product = products.find(prod => prod.id === id);
-            const updatedProducts = products.filter(p => p.id !== id);
+            const updatedProducts = products.filter(prod => prod.id !== id);
             fs.writeFile(p, JSON.stringify(updatedProducts), err => {
                 if (!err) {
-                    Cart.deleteProduct(id, product.price);
+                    Cart, deleteProduct(id, product.price);
                 }
             });
         });
