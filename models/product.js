@@ -1,25 +1,5 @@
-//const products = [];    ///이곳에 집어넣고 이걸 사용하고 싶다.
-const fs = require('fs');
-const path = require('path');
-const { deleteProduct } = require('./cart');
-
+const db = require('../util/database');
 const Cart = require('./cart');
-const p = path.join(
-    path.dirname(process.mainModule.filename),
-    'data',
-    'products.json'
-);
-
-const getproductsFromFile = cb => {
-    fs.readFile(p, (err, fileContent) => {
-        if (err) {
-            cb([]);
-        } else {
-            cb(JSON.parse(fileContent));
-        }
-    });
-};
-
 
 module.exports = class Product {
     constructor(id, title, imageUrl, description, price) {
@@ -29,56 +9,21 @@ module.exports = class Product {
         this.imageUrl = imageUrl;
         this.description = description;
 
-
     }
     save() {
-        getproductsFromFile(products => {
-            if (this.id) {
-                const existingProductIndex = products.findIndex(
-                    prod => prod.id === this.id
-                );
-                const updateProducts = [...products];
-                updateProducts[existingProductIndex] = this;
-                fs.writeFile(p, JSON.stringify(updateProducts), (err) => {
-                    console.log(err);
-                });
-            } else {
-                this.id = Math.random().toString();
-                products.push(this);
-                fs.writeFile(p, JSON.stringify(products), (err) => {
-                    console.log(err);
-                });
-            }
-        });
-
+        //      return db.execute(`insert into products (title,price,imageUrl,description) values(${this.title},${this.price},${this.imageUrl},${this.description})`);  //직접 짜본코드
+        return db.execute('insert into products (title, price, imageUrl, description) values(?,?,?,?)', [this.title, this.price, this.imageUrl, this.description]);
     }
     static deleteById(id) {
-        getproductsFromFile(products => {
-            const product = products.find(prod => prod.id === id);
-            const updatedProducts = products.filter(prod => prod.id !== id);
-            fs.writeFile(p, JSON.stringify(updatedProducts), err => {
-                if (!err) {
-                    Cart.deleteProduct(id, product.price);
-                }
-            });
-        });
+        return db.execute(`delete from products where ${id}`);      //직접 짜본코드
+    }
+    static fetchAll() {
+        return db.execute('select * from products');
 
     }
-    static fetchAll(cb) {
-        getproductsFromFile(cb);
-    }
 
-    static findById(id, cb) {
-        getproductsFromFile(products => {
-            // products.forEach(element => {
-            //     if (element.id === id) return element;
-            // });
-            const product = products.find(p => p.id === id);
-            cb(product);
-
-
-        });
-
+    static findById(id) {
+        return db.execute('select * from products where products.id = ?', [id]);    //직접 짜본코드
     }
 
 };

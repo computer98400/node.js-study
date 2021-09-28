@@ -19,8 +19,17 @@ exports.postAddProduct = (req, res, next) => {
     const price = req.body.price;
     const description = req.body.description;
     const product = new Product(null, title, imageUrl, description, price);    //이녀석은 입력값을 받는다.
-    product.save();                                                     //입력값을 저장해준다.
-    res.redirect('/');
+    // product.save()
+    //     .then(
+    //         console.log("test sucess")
+    //     )
+    //     .catch(err => {
+    //         console.log(err)
+    //     });                                                     //입력값을 저장해준다.
+    product.save().then(() => { res.redirect('/'); }).catch(err => { console.log(err); });
+
+
+
 }
 
 exports.getEditProduct = (req, res, next) => {
@@ -29,18 +38,20 @@ exports.getEditProduct = (req, res, next) => {
         return res.redirect('/');
     }
     const prodId = req.params.productId;
-    Product.findById(prodId, product => {
-        if (!product) {
-            return res.redirect('/');
+    Product.findById(prodId)                                    //내가짠 코드
+        .then(result => {
+            res.render('admin/edit-product', {
+                pageTitle: 'Edit Product',
+                path: '/admin/edit-product',
+                editing: editMode,
+                product: result
+            })
         }
-        res.render('admin/edit-product', {
-            pageTitle: 'Edit Product',
-            path: '/admin/edit-product',
-            editing: editMode,
-            product: product
+        )
+        .catch(err => {
+            console.log(err);
         });
 
-    });
 
 
 }
@@ -57,20 +68,27 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
-    Product.deleteById(prodId);
-    res.redirect('/admin/products');
+    Product.deleteById(prodId)
+        .then(test => {
+            res.redirect('/admin/products');
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };
 
 
 exports.getProducts = (req, res, next) => {
 
-    Product.fetchAll((products) => {
+    Product.fetchAll()
+        .then(([rows, fieldData]) => {
+            res.render('admin/products', {
+                prods: rows,
+                pageTitle: 'Admin Products',
+                path: '/admin/products'
+            });
 
-        res.render('admin/products', {
-            prods: products,
-            pageTitle: 'Admin Products',
-            path: '/admin/products'
-        });
+        })
+        .catch();
 
-    });
 }

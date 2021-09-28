@@ -6,7 +6,7 @@ const shopRoutes = require('./routes/shop');
 
 const errorController = require('./controllers/404');
 
-
+const db = require('./util/database');
 //const expressHbs = require('express-handlebars');
 const app = express();
 
@@ -20,6 +20,15 @@ app.set('view engine', 'ejs');
 //app.set('view engine', 'handlebars');
 //app.set('view engine', 'pug');
 app.set('views', 'views');
+
+
+// db.execute('select * from products')
+//     .then(result => {
+//         console.log(result[0], result[1]);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
