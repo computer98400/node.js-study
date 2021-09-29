@@ -6,7 +6,7 @@ const shopRoutes = require('./routes/shop');
 
 const errorController = require('./controllers/404');
 
-const db = require('./util/database');
+const sequelize = require('./util/database');
 //const expressHbs = require('express-handlebars');
 const app = express();
 
@@ -39,6 +39,16 @@ app.use('/admin', adminRoutes);
 
 app.use(errorController.page404);
 
+sequelize.sync()
+.then(result => {
+  //  console.log(result);
+    app.listen(3000);
+})
+.catch(err => {
+    console.log(err);
+});
+
+
 //console.log(routes.someText);
 
 
@@ -59,7 +69,7 @@ app.use(errorController.page404);
 //- 단순히 서버를 만들어둔다해서 어떤 동작을 하는게 아니기 때문이다.
 
 // const server = http.createServer(app);
-app.listen(3000);    //포트 3000을 통해 서버가 요청을 계속 수신하게 된다.
+    //포트 3000을 통해 서버가 요청을 계속 수신하게 된다.
 
 //------------------------------------------------------
 //위 코드를 실행하게 되면 요청이 들어왔을때 프로세스가 바로 종료됨을 알 수 있다.
