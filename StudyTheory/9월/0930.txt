@@ -1,0 +1,2 @@
+sequelize
+belongsTo - 관계설정시에 1 대 1관계를 의미. 동시에 source
