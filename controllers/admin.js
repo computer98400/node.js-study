@@ -58,16 +58,18 @@ exports.getEditProduct = (req, res, next) => {
         return res.redirect('/');
     }
     const prodId = req.params.productId;
-    Product.findByPk(prodId)                                    //내가짠 코드
-        .then(result => {
-            if (!result) {
+    req.user
+        .getProducts({ where: { id: prodId } })                             //내가짠 코드
+        .then(products => {
+            const product = products[0];
+            if (!products) {
                 return res.redirect('/');
             }
             res.render('admin/edit-product', {
                 pageTitle: 'Edit Product',
                 path: '/admin/edit-product',
                 editing: editMode,
-                product: result
+                product: product
             })
         })
         .catch(err => {
@@ -120,8 +122,7 @@ exports.postDeleteProduct = (req, res, next) => {
 
 
 exports.getProducts = (req, res, next) => {
-
-    Product.findAll()
+    req.user.getProducts()
         .then(products => {
             res.render('admin/products', {
                 prods: products,
