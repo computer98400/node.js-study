@@ -1,0 +1,13 @@
+161강의부터 다시 시작.
+
+다른 사항
+1. models/user.js - DB 구성 쉼표 제거
+2. controllers/admin.js - postdeleteProduct내용 수정
+                        - 기존에 상품을 직접 찾았다면, 현재 - DB를 연동하여 삭제함.
+3. app.js/sequelize.then().then()~~ -> 기존엔 cart의 내용을 불러올수없는 구조였음.해당 흐름중에 유저에 따른 cart를 가져올수잇도록 변경.
+4. controllers/shop.js - postCart 기능이 제대로 동작안했던건 위의 내용들을 포함하긴하지만, 동시에 postCart에 변수이름들이 다르기도했다. 오타에 신경써야됨.
+
+
+정리사항
+1. models/cart.js를 만드는 이유 - 해당 유저의 선택들이기 때문에 각자의 cart가 있다는 식으로 생각해야함.
+2. app.js에 sequelize의 내용이 제대로 연결되어있지 않았음. 흐름 파악이 좀더 중요할 듯 싶다.

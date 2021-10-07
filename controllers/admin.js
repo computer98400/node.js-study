@@ -18,16 +18,16 @@ exports.postAddProduct = (req, res, next) => {
     const imageUrl = req.body.imageUrl;
     const price = req.body.price;
     const description = req.body.description;
-    req.user.createProduct({
-        title: title,
-        price: price,
-        imageUrl: imageUrl,
-        description: description
-    })
+    req.user
+        .createProduct({
+            title: title,
+            price: price,
+            imageUrl: imageUrl,
+            description: description
+        })
         .then(result => {
             res.redirect('/admin/products');
         })
-
         .catch(err => console.log(err));
     // const product = new Product(null, title, imageUrl, description, price);    //이녀석은 입력값을 받는다.
     // product.save()
@@ -94,10 +94,10 @@ exports.postEditProduct = (req, res, next) => {
     // });
     Product.findByPk(prodId)
         .then(product => {
-            product.title = updatedTitle,
-                product.price = updatedPrice,
-                product.description = updatedDesc,
-                product.imageUrl = updatedImageUrl
+            product.title = updatedTitle;
+            product.price = updatedPrice;
+            product.description = updatedDesc;
+            product.imageUrl = updatedImageUrl
             return product.save();
         })
         .then(result => {
@@ -111,18 +111,20 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
-    Product.destroy({ where: { id: prodId } })
+    Product.findByPk(prodId)
+        .then(product => {
+            return Product.destroy();
+        })
         .then(test => {
             res.redirect('/admin/products');
         })
-        .catch(err => {
-            console.log(err);
-        });
+        .catch(err => { console.log(err) });
 };
 
 
 exports.getProducts = (req, res, next) => {
-    req.user.getProducts()
+    req.user
+        .getProducts()
         .then(products => {
             res.render('admin/products', {
                 prods: products,
@@ -131,6 +133,6 @@ exports.getProducts = (req, res, next) => {
             });
 
         })
-        .catch();
+        .catch(err => console.log(err));
 
 }

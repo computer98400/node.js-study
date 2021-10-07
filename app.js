@@ -5,7 +5,6 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 const errorController = require('./controllers/404');
-
 const sequelize = require('./util/database');
 const Product = require('./models/product');
 const User = require('./models/user');
@@ -64,9 +63,10 @@ Product.belongsToMany(Cart, { through: CartItem });
 
 
 sequelize
-    .sync({ force: true })
+    .sync()
+    //.sync({ force: true })
     .then(result => {
-        return User.findByPk(1);
+        return User.findByPk(1);    //더미 사용자를 통해서 실습.
     })
     .then(user => {
         if (!user) {
@@ -75,9 +75,10 @@ sequelize
         return user;
     })
     .then(user => {
-        console.log(user);
-        app.listen(3000);
+        //console.log(user);
+        return user.createCart();
     })
+    .then(cart => { app.listen(3000); })
     .catch(err => {
 
         console.log(err);
