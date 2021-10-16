@@ -16,7 +16,7 @@ const errorController = require('./controllers/404');
 //const expressHbs = require('express-handlebars');
 // //---------------------------------------------------------------
 const app = express();
-const mongoConnect = require('./util/database');
+const mongoConnect = require('./util/database').mongoConnect;
 
 
 // app.engine('handlebars', expressHbs({
@@ -50,6 +50,7 @@ app.use((req, res, next) => {
     //     })
     //     .catch(err => console.log(err));
     // //--------------------------------------
+    next();
 });
 
 
@@ -58,10 +59,8 @@ app.use((req, res, next) => {
 
 app.use(errorController.page404);
 
-mongoConnect((client) => {
-    console.log(client);
+mongoConnect(() => {
     app.listen(3000);
-
 })
 
 // //- For SQL ----------------------------------------------------------
