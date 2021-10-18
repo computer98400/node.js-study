@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-//const adminRoutes = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 //const shopRoutes = require('./routes/shop');
 
 const errorController = require('./controllers/404');
@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 
 
 //app.use(shopRoutes);
-//app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 
 app.use(errorController.page404);
 

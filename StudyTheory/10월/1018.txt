@@ -1,0 +1,5 @@
+mongoDB의 경우 제품을 insert할시에 자동으로 만들어진다.
+
+mongoDB compass 설치 완료.
+- mongoDB workbench 같은거라 생각하면 될듯하다.
+
